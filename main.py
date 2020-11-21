@@ -1,12 +1,12 @@
-from flask import Flask, request, Response
+from flask import Flask, request, Response, jsonify
 import helper
 import json
 
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-	return "TO DO"
+def start():
+	return jsonify({'ToDo': 'List'})
 
 @app.route('/item/new', methods=['POST'])
 def add_item():
@@ -74,3 +74,6 @@ def delete_item():
     response = Response(json.dumps(res_data), mimetype='application/json')
 
     return response
+
+if __name__ == '__main__':
+    app.run()
